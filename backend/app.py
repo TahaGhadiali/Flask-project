@@ -13,9 +13,19 @@ db = client.test
 collection = db['flask-tutorial']
 
 
-
+db = client['todo_db']
+collection = db['todo_items']
 
 app = Flask(__name__)
+
+@app.route('/submittodoitem', methods=['POST'])
+def submit_todo_item():
+    item_name = request.form['itemName']
+    item_desc = request.form['itemDescription']
+    collection.insert_one({'name': item_name, 'description': item_desc})
+    return 'Item Added Successfully!'
+
+
 
 
 
