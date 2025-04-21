@@ -14,6 +14,13 @@ def home():
     print(day_of_week)
     return render_template('index.html',day_of_week=day_of_week,current_time=current_time)
 
+
+
+@app.route('/todo')
+def todo():
+    return render_template('todo.html')
+
+
 @app.route('/submit',methods=['POST'])
 def submit():
     form_data = dict(request.form)
